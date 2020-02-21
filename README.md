@@ -1,2 +1,2 @@
-# ED_pr1
-Practica 1 Estructura de Datos GEI-URV
+# ED_pr 2020
+Repositorio de las practicas: Estructura de Datos GEI-URV
