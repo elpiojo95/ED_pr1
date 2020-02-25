@@ -3,8 +3,10 @@
 
 #include <stdbool.h>
 
-extern struct Pila_tag;
+struct Pila_tag;
 typedef struct Pila_tag* Pila;
+
+int errnum;
 
 Pila Crear(int size);
 int Cim(Pila p);
