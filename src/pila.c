@@ -61,7 +61,6 @@ void Desapilar(Pila *ap)
 {
     if (EsBuida(*ap))
     {
-        // return some error
         printf("Error: Stack is empty!\n");
         exit(1);
     }
@@ -98,6 +97,19 @@ void Destruir(Pila *ap)
         // return some error
         printf("Error: Stack does not exist!\n");
         exit(1);
+    }  
+}
+
+void Mostrar(Pila p) 
+{
+    /*if (EsBuida(p))
+    {
+        printf("Error: Stack is empty!\n");
+        exit(1);
+    }*/
+    printf("Pos:\tNumero:\n");
+    for (int i = p->top; i >= 0; i--)
+    {
+        printf("%d\t%d\n", i+1, p->array[i]);
     }
-    
 }

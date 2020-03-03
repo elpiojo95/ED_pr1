@@ -15,5 +15,6 @@ void Desapilar(Pila *ap);
 bool EsBuida(Pila p);
 bool EsPlena(Pila p);
 void Destruir(Pila *ap);
+void Mostrar(Pila p);
 
 #endif // PILA_H
