@@ -3,10 +3,14 @@
 
 #include <stdbool.h>
 
+#define xfree(ptr) \
+  do { \
+    free(ptr); \
+    ptr = NULL; \
+  } while (0)
+
 struct Pila_tag;
 typedef struct Pila_tag* Pila;
-
-int errnum;
 
 Pila Crear(int size);
 int Cim(Pila p);

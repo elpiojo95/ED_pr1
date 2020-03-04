@@ -1,6 +1,5 @@
 /* pila.c */
 #include "pila.h"
-#include <errno.h>
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
@@ -15,19 +14,23 @@ struct Pila_tag
 Pila Crear(int size)
 {
     Pila p;
+    if (size<0)
+    {
+        printf("Error: SIZE can't be negative!\n");
+        exit(EXIT_FAILURE);
+    }
+
     p = (struct Pila_tag*) malloc(sizeof(struct Pila_tag));
     if (p == NULL)
     {
-        errnum = errno;
-        printf("Error: %s\n", strerror(errnum));
+        printf("Error: Not enough space\n");
         exit(EXIT_FAILURE);
     }
     
     p->array = (int*) malloc(sizeof(int)*size);
     if (p->array == NULL)
     {
-        errnum = errno;
-        printf("Error: %s\n", strerror(errnum));
+        printf("Error: Not enough space\n");
         exit(EXIT_FAILURE);
     }
 
@@ -42,27 +45,37 @@ int Cim(Pila p)
     {
         // return some error
         printf("Error: Stack is empty!\n");
-        exit(1);
+        exit(EXIT_FAILURE);
     }
     return p->array[p->top];
 }
 
 void Apilar(Pila *ap, int elem)
 {
+    if ((*ap) == NULL)
+    {
+        printf("Error: Stack does not exist!\n");
+    }
+    
     if (EsPlena(*ap))
     {
         printf("Error: Stack is full!\n");
-        exit(1);
+        exit(EXIT_FAILURE);
     }
     (*ap)->array[++(*ap)->top] = elem;
 }
 
 void Desapilar(Pila *ap)
 {
+    if ((*ap) == NULL)
+    {
+        printf("Error: Stack does not exist!\n");
+    }
+
     if (EsBuida(*ap))
     {
         printf("Error: Stack is empty!\n");
-        exit(1);
+        exit(EXIT_FAILURE);
     }
     (*ap)->top--;
 }
@@ -89,27 +102,29 @@ void Destruir(Pila *ap)
 {
     if ((*ap) != NULL)
     {
-        free((*ap)->array);
-        free(*ap);
+        xfree((*ap)->array);
+        xfree(*(ap));
+        (*ap) = NULL;
     }
     else
     {
-        // return some error
         printf("Error: Stack does not exist!\n");
-        exit(1);
+        exit(EXIT_FAILURE);
     }  
 }
 
 void Mostrar(Pila p) 
 {
-    /*if (EsBuida(p))
+    if (p == NULL)
     {
-        printf("Error: Stack is empty!\n");
-        exit(1);
-    }*/
-    printf("Pos:\tNumero:\n");
-    for (int i = p->top; i >= 0; i--)
+        printf("Error: Stack does not exist!\n");
+    }
+    else
     {
-        printf("%d\t%d\n", i+1, p->array[i]);
+        printf("Pos:\tNumero:\n");
+        for (int i = p->top; i >= 0; i--)
+        {
+            printf("%d\t%d\n", i+1, p->array[i]);
+        }
     }
 }
