@@ -39,12 +39,27 @@ int main()
     printf("Pila Vaciada!\n");
     estadopila(p);
     Mostrar(p);
+
     /* DESTRUIR */
     printf("\nDestruyendo la pila...\n");
     Destruir(&p);
     printf("Pila destruida!\n");
+    Mostrar(p);
 
+    /* CREAR SOBRE LA MISMA VARIABLE */
+    printf("\nCreando pila en la misma variable...\n");
+    p = Crear(5);
+    printf("Pila creada!\n");
+    estadopila(p);
+    printf("Apilamos un 22!\n");
+    Apilar(&p, 22);
+    estadopila(p);
+    Mostrar(p);
+    Destruir(&p);
 
+    /* FIN DEL TEST */
     printf("\n\tEl test ha sido un exito!\n");
     return 0;
+
+    // TO-DO hacer test con fallos para 
 }
