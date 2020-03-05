@@ -28,20 +28,23 @@ int LeerFichero(const char *fileName, char **s)
     }
     /* Get string size from file */
     fseek(file, 0, SEEK_END);
-    size = ftell(file);
+    size = ftell(file) + 1; // un tamaño extra para la coma final
     fseek(file, 0, SEEK_SET);
 
-    /* Allocate memory & full string */
+    /* Allocate memory plus 1 for extra char*/
     *s = (char*) malloc(sizeof(char)*size);
     if (s == NULL)
     {
         exit(EXIT_FAILURE);
     }
-    
-    for (int i = 0; i < size; i++)
+
+    /* Full the string with file data */
+    int i;
+    for (i = 0; i < size-1; i++) // todo menos la ultima posicion que es coma
     {
         (*s)[i] = fgetc(file);
     }
+    (*s)[i] = ',';
     fclose(file);
     return size;
 }
