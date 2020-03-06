@@ -128,3 +128,8 @@ void Mostrar(Pila p)
         }
     }
 }
+
+int Tamanio(Pila p)
+{
+    return p->top+1;
+}
