@@ -9,7 +9,6 @@ CFLAGS=-Wall -g
  
 .PHONY : test rpn
 test : test_pila
-rpn : rpn
  
 ### test_pila MAIN
 # Link the object files into a binary
