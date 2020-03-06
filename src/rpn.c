@@ -4,21 +4,23 @@
 #include <stdlib.h>
 
 int LeerFichero(const char *fileName, char **s);
+void Operar(Pila p, char *s);
+int EsNumero(char *s);
 
 int main()
 {
     char *data, *token;
+    Pila pila_rpn;
 
     //int nElem;
     LeerFichero("input.txt", &data);
-
+    pila_rpn = Crear(10);
     /* get the first token */
     token = strtok(data, ",");
     
     /* walk through other tokens */
     while( token != NULL ) {
-        printf( "%s\n", token);
-        //Operar(token)
+        Operar(pila_rpn ,token);
 
         token = strtok(NULL, ",");
     }
@@ -58,4 +60,50 @@ int LeerFichero(const char *fileName, char **s)
     (*s)[i] = ',';
     fclose(file);
     return size;
+}
+
+void Operar(Pila p, char *s)
+{
+    if (EsNumero(s))
+    {
+        Apilar(&p, atoi(s));
+    }
+    else
+    {
+        switch (s)
+        {
+        case s[0] == '+' :
+            
+            break;
+
+        case s[0] == '-' :
+            /* code */
+            break;
+
+        case s[0] == '*' :
+            /* code */
+            break;
+
+        case s[0] == '/' :
+            /* code */
+            break;
+        
+        default:
+            break;
+        }
+    }
+    
+    
+}
+
+int EsNumero(char *s)
+{
+    for (int i = 0; i < strlen(s); i++)
+    {
+        if (s[i] >= '0' && s[i] <= '9')
+        {
+            return 1;
+        }
+    }
+    return 0;
 }
