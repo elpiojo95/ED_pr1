@@ -7,15 +7,26 @@ int LeerFichero(const char *fileName, char **s);
 
 int main()
 {
-    char *data;
-    int nElem;
-    nElem = LeerFichero("input.txt", &data);
-    printf("size: %d, string: %s", nElem, data);
+    char *data, *token;
+
+    //int nElem;
+    LeerFichero("input.txt", &data);
+
+    /* get the first token */
+    token = strtok(data, ",");
+    
+    /* walk through other tokens */
+    while( token != NULL ) {
+        printf( "%s\n", token);
+        //Operar(token)
+
+        token = strtok(NULL, ",");
+    }
 
     return 0;
 }
 
-
+/* Function Definitions */
 int LeerFichero(const char *fileName, char **s)
 {
     FILE *file = fopen(fileName,"r");
