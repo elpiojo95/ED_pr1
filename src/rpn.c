@@ -21,10 +21,18 @@ int main()
     /* walk through other tokens */
     while( token != NULL ) {
         Operar(pila_rpn ,token);
-
+        printf("%s ", token);
         token = strtok(NULL, ",");
     }
-    Mostrar(pila_rpn);
+    printf("\nResultado [%d]\n", Cim(pila_rpn));
+    if (Tamanio(pila_rpn) == 1)
+    {
+        printf("Resultado Correcto!!!\n");
+    }
+    else
+    {
+        printf("Algo a fallado al operar!!!\n");
+    }
     return 0;
 }
 
@@ -85,11 +93,31 @@ void Operar(Pila p, char *s)
             }
 
         case '-' :
-            /* code */
+            if (Tamanio(p) < 2)
+            {
+                printf("Faltan numeros para restar!\n");
+                break;
+            }
+            else
+            {
+                int op1 = CimDesap(&p);
+                int op2 = CimDesap(&p);
+                Apilar(&p, op2 - op1);
+                break;
+            }
             break;
 
         case '*' :
-            /* code */
+            if (Tamanio(p) < 2)
+            {
+                printf("Faltan numeros para multiplicar!\n");
+                break;
+            }
+            else
+            {
+                Apilar(&p, CimDesap(&p) * CimDesap(&p));
+                break;
+            }
             break;
 
         case '/' :
@@ -97,7 +125,16 @@ void Operar(Pila p, char *s)
             break;
         
         default:
-            break;
+            if (Tamanio(p) < 1)
+            {
+                printf("Faltan numeros para operar!\n");
+                break;
+            }
+            else
+            {
+                Apilar(&p, CimDesap(&p) * -1);
+                break;
+            }
         }
     }
     
