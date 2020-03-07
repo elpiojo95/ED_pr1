@@ -21,5 +21,6 @@ bool EsPlena(Pila p);
 void Destruir(Pila *ap);
 void Mostrar(Pila p);
 int Tamanio(Pila p);
+int CimDesap(Pila *p);
 
 #endif // PILA_H

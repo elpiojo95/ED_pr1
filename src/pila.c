@@ -133,3 +133,10 @@ int Tamanio(Pila p)
 {
     return p->top+1;
 }
+
+int CimDesap(Pila *p)
+{
+    int c = Cim(*p);
+    Desapilar(p);
+    return c;
+}
