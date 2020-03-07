@@ -24,7 +24,7 @@ int main()
 
         token = strtok(NULL, ",");
     }
-
+    Mostrar(pila_rpn);
     return 0;
 }
 
@@ -70,21 +70,29 @@ void Operar(Pila p, char *s)
     }
     else
     {
-        switch (s)
+        switch (s[0])
         {
-        case s[0] == '+' :
-            
-            break;
+        case '+' :
+            if (Tamanio(p) < 2)
+            {
+                printf("Faltan numeros para sumar!\n");
+                break;
+            }
+            else
+            {
+                Apilar(&p, CimDesap(&p) + CimDesap(&p));
+                break;
+            }
 
-        case s[0] == '-' :
+        case '-' :
             /* code */
             break;
 
-        case s[0] == '*' :
+        case '*' :
             /* code */
             break;
 
-        case s[0] == '/' :
+        case '/' :
             /* code */
             break;
         
