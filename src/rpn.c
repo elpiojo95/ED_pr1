@@ -83,7 +83,8 @@ void Operar(Pila p, char *s)
         case '+' :
             if (Tamanio(p) < 2)
             {
-                printf("Faltan numeros para sumar!\n");
+                printf("\nFaltan numeros para sumar!\n");
+                exit(EXIT_FAILURE);
                 break;
             }
             else
@@ -95,7 +96,8 @@ void Operar(Pila p, char *s)
         case '-' :
             if (Tamanio(p) < 2)
             {
-                printf("Faltan numeros para restar!\n");
+                printf("\nFaltan numeros para restar!\n");
+                exit(EXIT_FAILURE);
                 break;
             }
             else
@@ -110,7 +112,8 @@ void Operar(Pila p, char *s)
         case '*' :
             if (Tamanio(p) < 2)
             {
-                printf("Faltan numeros para multiplicar!\n");
+                printf("\nFaltan numeros para multiplicar!\n");
+                exit(EXIT_FAILURE);
                 break;
             }
             else
@@ -127,7 +130,8 @@ void Operar(Pila p, char *s)
         default:
             if (Tamanio(p) < 1)
             {
-                printf("Faltan numeros para operar!\n");
+                printf("\nFaltan numeros para operar!\n");
+                exit(EXIT_FAILURE);
                 break;
             }
             else
