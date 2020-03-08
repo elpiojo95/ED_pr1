@@ -26,6 +26,7 @@ int main()
         printf("%s ", token);
         token = strtok(NULL, ",");
     }
+
     printf("\nResultado [%d]\n", Cim(pila_rpn));
     if (Tamanio(pila_rpn) == 1)
     {
@@ -185,8 +186,6 @@ void Operar(Pila p, char *s)
             }
         }
     }
-    
-    
 }
 
 int EsNumero(char *s)
