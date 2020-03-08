@@ -6,6 +6,8 @@
 int LeerFichero(const char *fileName, char **s);
 void Operar(Pila p, char *s);
 int EsNumero(char *s);
+int Pot(int base, int exp);
+int Fact(int n);
 
 int main()
 {
@@ -103,8 +105,7 @@ void Operar(Pila p, char *s)
             else
             {
                 int op1 = CimDesap(&p);
-                int op2 = CimDesap(&p);
-                Apilar(&p, op2 - op1);
+                Apilar(&p, CimDesap(&p) - op1);
                 break;
             }
             break;
@@ -124,9 +125,52 @@ void Operar(Pila p, char *s)
             break;
 
         case '/' :
-            /* code */
-            break;
-        
+            if (Tamanio(p) < 2)
+            {
+                printf("\nFaltan numeros para multiplicar!\n");
+                exit(EXIT_FAILURE);
+                break;
+            }
+            else
+            {
+                int op1 = CimDesap(&p);
+                int op2 = CimDesap(&p);
+                if (op2 == 0)
+                {
+                    printf("\nNo se puede dividir por 0 :(\n");
+                    exit(EXIT_FAILURE);
+                }
+                Apilar(&p, op2 / op1);
+                break;
+            }
+
+        case '^' :
+            if (Tamanio(p) < 2)
+            {
+                printf("\nFaltan numeros para operar!\n");
+                exit(EXIT_FAILURE);
+                break;
+            }
+            else
+            {
+                int op1 = CimDesap(&p);
+                int op2 = CimDesap(&p);
+                Apilar(&p, Pot(op2, op1));
+                break;
+            }
+
+        case '!' :
+            if (Tamanio(p) < 1)
+            {
+                printf("\nLa pila no tiene numeros!\n");
+                exit(EXIT_FAILURE);
+            }
+            else
+            {
+                Apilar(&p, Fact(CimDesap(&p)));
+                break;
+            }
+            
         default:
             if (Tamanio(p) < 1)
             {
@@ -155,4 +199,31 @@ int EsNumero(char *s)
         }
     }
     return 0;
+}
+
+int Pot(int base, int exp)
+{
+    int result = 1;
+    while (exp != 0)
+    {
+        if (exp % 2)
+           result *= base;
+        exp /= 2;
+        base *= base;
+    }
+    return result;
+}
+
+int Fact(int n)
+{
+    if (n <= 1)
+    {
+        return 1;
+    }
+    else
+    {
+        return n * Fact(n-1);
+    }
+    
+    
 }
