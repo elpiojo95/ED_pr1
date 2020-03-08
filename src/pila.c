@@ -55,6 +55,7 @@ void Apilar(Pila *ap, int elem)
     if ((*ap) == NULL)
     {
         printf("Error: Stack does not exist!\n");
+        exit(EXIT_FAILURE);
     }
     
     if (EsPlena(*ap))
