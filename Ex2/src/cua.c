@@ -12,7 +12,16 @@ struct Cua_tag
 
 int Crear(Cua *ac, int size)
 {
+    (*ac).array = (int*) malloc(sizeof(int) * size);
+    if ((*ac).array == NULL)
+    {
+        return ERROR_CREAR;
+    }
     
+    (*ac).max = size;
+    (*ac).index = 0;
+    (*ac).actual = 0;
+    return SUCCESS;
 }
 
 int Encuar(Cua *ac, int elem)
