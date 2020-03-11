@@ -32,6 +32,7 @@ La implementacion de la calculadora rpn se basa en cargar todo el fichero en un 
 
 En la calculadora que implementado los siguientes operadores extra:
 > Potenciación
+>
 > Facorial
 
 comando de compilado
