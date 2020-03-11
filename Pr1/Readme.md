@@ -1,6 +1,7 @@
 # Detalles de implementación 
+`gcc -Wall -g -o test_pila pila.h  pila.c test_pila.c`
 
-`gcc   `
+`gcc -Wall -g -o rpn pila.h  pila.c rpn.c`
 
 ### Pila
 Para la implementacion de la pila he decidido declarar el tipo "Pila" en el fichero "pila.h" y definiar la estructura en "pila.c", de esta manera desde un programa que utilice nuestra pila no tendra acceso a los datos de la estructura, simulando los atributos privados en las clases.
