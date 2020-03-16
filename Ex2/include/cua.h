@@ -22,9 +22,9 @@ typedef struct Cua_tag* Cua;
 int Crear(Cua *ac, int size);
 int Encuar(Cua *ac, int elem);
 int Desencuar(Cua*ac);
-int Cap(Cuac, int*elem);
-int EsBuida(Cuac, bool *b);
-int EsPlena(Cuac, bool *b);
+int Cap(Cua c, int *elem);
+int EsBuida(Cua c, bool *b);
+int EsPlena(Cua c, bool *b);
 int Destruir(Cua*ac);
 
 #endif // CUA_H

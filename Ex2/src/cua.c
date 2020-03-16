@@ -12,15 +12,15 @@ struct Cua_tag
 
 int Crear(Cua *ac, int size)
 {
-    (*ac).array = (int*) malloc(sizeof(int) * size);
-    if ((*ac).array == NULL)
+    (*ac)->array = (int*) malloc(sizeof(int) * size);
+    if ((*ac)->array == NULL)
     {
         return ERROR_CREAR;
     }
     
-    (*ac).max = size;
-    (*ac).index = 0;
-    (*ac).actual = 0;
+    (*ac)->max = size;
+    (*ac)->index = 0;
+    (*ac)->actual = 0;
     return SUCCESS;
 }
 
@@ -34,22 +34,22 @@ int Desencuar(Cua*ac)
 
 }
 
-int Cap(Cuac, int*elem)
+int Cap(Cua c, int*elem)
 {
 
 }
 
-int EsBuida(Cuac, bool *b)
+int EsBuida(Cua c, bool *b)
 {
 
 }
 
-int EsPlena(Cuac, bool *b)
+int EsPlena(Cua c, bool *b)
 {
 
 }
 
-int Destruir(Cua*ac)
+int Destruir(Cua *ac)
 {
 
 }
