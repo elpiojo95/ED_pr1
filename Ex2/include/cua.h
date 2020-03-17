@@ -26,5 +26,6 @@ int Cap(Cua c, int *elem);
 int EsBuida(Cua c, bool *b);
 int EsPlena(Cua c, bool *b);
 int Destruir(Cua*ac);
+int Mostrar(Cua c);
 
 #endif // CUA_H
