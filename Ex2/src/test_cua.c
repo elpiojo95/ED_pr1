@@ -46,6 +46,16 @@ int main(int argc, char *argv[]) {
 
 	printf("%d\n", top);
 	Mostrar(c);
-	
+	error = Destruir(&c);
+	if (error)
+	{
+		printf("Error Destruir: %d\n", error);
+	}
+	printf("\npost destruir\n");
+	error = Mostrar(c);
+	if (error)
+	{
+		printf("Error Mostrar: %d\n", error);
+	}
 	return(0);
 }

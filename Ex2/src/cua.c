@@ -14,20 +14,30 @@ struct Cua_tag
 
 int Crear(Cua *ac, int size)
 {
-    (*ac)->array = (int*) malloc(sizeof(int) * size);
-    if ((*ac)->array == NULL)
-    {
-        return ERROR_CREAR;
-    }
+    Cua c;
+    
     if (size < 0)
     {
         return ERROR_CREAR;
     }
-    
-    (*ac)->m_Elem = size;
-    (*ac)->index = 0;
-    (*ac)->n_Elem = 0;
 
+    c = (struct Cua_tag*) malloc(sizeof(struct Cua_tag));
+    if (c == NULL)
+    {
+        return ERROR_CREAR;
+    }
+
+    c->array = (int*) malloc(sizeof(int) * size);
+    if (c->array == NULL)
+    {
+        return ERROR_CREAR;
+    }
+    
+    c->m_Elem = size;
+    c->index = 0;
+    c->n_Elem = 0;
+
+    (*ac) = c;
     return SUCCESS;
 }
 
@@ -145,7 +155,13 @@ int EsPlena(Cua c, bool *b)
 
 int Destruir(Cua *ac)
 {
-    return SUCCESS;
+    if ((*ac) != NULL)
+    {
+        xfree((*ac)->array);
+        xfree(*(ac));
+        return SUCCESS;
+    }
+    return ERROR_DESTRUIR;
 }
 
 int Mostrar(Cua c)
