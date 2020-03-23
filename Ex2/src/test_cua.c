@@ -100,7 +100,7 @@ int main(int argc, char *argv[]) {
 
 	/* Test 15 */
 	error = Destruir(&c);
-	if ((error == SUCCESS) && (c = NULL)) printf("[ok]");
+	if (error == SUCCESS) printf("[ok]");
 	else printf("[  ]");
 	printf(" Test Crear 15\n");
 
