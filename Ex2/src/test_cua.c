@@ -3,7 +3,7 @@
 
 int main(int argc, char *argv[]) {
 	Cua c = NULL, c_nocreada = NULL;
-	int error = 0, num;
+	int error = 0, num, ok = 0;
 	bool b;
 
 	/* Test 1 */
@@ -110,6 +110,25 @@ int main(int argc, char *argv[]) {
 	else printf("[  ]");
 	printf(" Test Crear 16\n");
 	//mostrar
+
+	/* Test 18 */
+	error = Destruir(&c);
+	error = Crear(&c, 0);
+	error = EncuarPlus(&c, 1);
+	if (error == SUCCESS) ok++;
+
+	error = EncuarPlus(&c, 2);
+	if (error == SUCCESS) ok++;
+
+	error = EncuarPlus(&c, 3);
+	if (error == SUCCESS) ok++;
+
+	error = EncuarPlus(&c, 4);
+	if (error == SUCCESS) ok++;
+
+	if (ok == 4) printf("[ok]");
+	else printf("[  ]");
+	printf(" Test Crear 18\n");
 
 	return(0);
 }

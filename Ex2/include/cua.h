@@ -9,6 +9,7 @@
 #define CUA_NO_CREADA 3
 #define CUA_BUIDA 4
 #define CUA_PLENA 5
+#define ERROR_AMPLIAR 6
 
 #define xfree(ptr) \
   do { \
@@ -21,6 +22,7 @@ typedef struct Cua_tag* Cua;
 
 int Crear(Cua *ac, int size);
 int Encuar(Cua *ac, int elem);
+int EncuarPlus(Cua *ac, int elem);
 int Desencuar(Cua*ac);
 int Cap(Cua c, int *elem);
 int EsBuida(Cua c, bool *b);

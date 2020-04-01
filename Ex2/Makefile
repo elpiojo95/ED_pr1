@@ -21,12 +21,12 @@ test_cua.o : src/test_cua.c
 
 
 ### rpn MAIN
-rpn : rpn.o cua.o
-	$(LINK) $(CFLAGS) -o bin/rpn obj/rpn.o obj/cua.o
+triangulo : triangulo.o cua.o
+	$(LINK) $(CFLAGS) -o bin/triangulo obj/triangulo.o obj/cua.o
 
 # Compile the source files into object files
-rpn.o : src/rpn.c
-	$(CC) $(CFLAGS) -I include -c src/rpn.c -o obj/rpn.o
+triangulo.o : src/trianglePascal.c
+	$(CC) $(CFLAGS) -I include -c src/trianglePascal.c -o obj/triangulo.o
  
 
 # cua code
@@ -34,12 +34,12 @@ cua.o : src/cua.c
 	$(CC) $(CFLAGS) -I include -c src/cua.c -o obj/cua.o
 
 # Run
-.PHONY : run_test run_rpn
+.PHONY : run_test run_triangulo
 run_test: test_cua
 	./bin/test_cua
 
-run_rpn: rpn
-	./bin/rpn
+run_triangulo: triangulo
+	./bin/triangulo
 
 # Clean target
 .PHONY : clean

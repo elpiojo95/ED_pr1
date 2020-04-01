@@ -67,6 +67,47 @@ int Encuar(Cua *ac, int elem)
     return SUCCESS;
 }
 
+int EncuarPlus(Cua *ac, int elem)
+{
+    bool estado = false;
+    int err = 0, num, max;
+    Cua temp;
+    
+    if ((*ac) == NULL)
+    {
+        return CUA_NO_CREADA;
+    }
+
+    if ((err = EsPlena(*ac, &estado)))
+    {
+        return err;
+    }
+
+    if (estado)
+    {
+        if ((*ac)->m_Elem == 0)
+        {
+            (*ac)->m_Elem = 1;
+        }
+        
+        err = Crear(&temp, (*ac)->m_Elem * 2);
+        if (err) return ERROR_AMPLIAR;
+        max = (*ac)->n_Elem;
+        for (int i = 0; i < max; i++)
+        {
+            Cap((*ac), &num);
+            Encuar(&temp, num);
+            Desencuar(ac);
+        }
+        Destruir(ac);
+        (*ac) = temp;
+    }
+    (*ac)->array[((*ac)->index + (*ac)->n_Elem) % (*ac)->m_Elem] = elem;
+    (*ac)->n_Elem++;
+
+    return SUCCESS;
+}
+
 int Desencuar(Cua*ac)
 {
     bool estado;
@@ -87,7 +128,7 @@ int Desencuar(Cua*ac)
         return CUA_BUIDA;
     }
 
-    (*ac)->index = (*ac)->index + 1 % (*ac)->m_Elem;
+    (*ac)->index = ((*ac)->index + 1) % (*ac)->m_Elem;
     (*ac)->n_Elem--;
 
     return SUCCESS;
