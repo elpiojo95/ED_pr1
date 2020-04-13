@@ -23,7 +23,7 @@ Node* CrearNode(int num);
 /* TESTED */
 int Crear(llista_encadenada *ll)
 {
-    if ((*ll) == NULL)
+    if (ll == NULL)
     {
         return ERROR_NOEXISTE;
     }
