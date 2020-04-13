@@ -1,40 +1,34 @@
-CC		:= gcc
-CFLAGS	:= -Wall -Wextra -g
+# Specify compiler
+CC=gcc
+ 
+# Specify linker
+LINK=gcc
 
-BIN		:= bin
-SRC		:= src
-INCLUDE	:= include
-LIB		:= lib
+# Specify flags
+CFLAGS=-Wall -g
+ 
+.PHONY : test rpn
+test : test_llista
+ 
+### test_llista MAIN
+# Link the object files into a binary
+test_llista : test_llista.o llista.o
+	$(LINK) $(CFLAGS) -o bin/test_llista obj/test_llista.o obj/llista.o
+ 
+# Compile the source files into object files
+test_llista.o : src/test_llista.c
+	$(CC) $(CFLAGS) -I include -c src/test_llista.c -o obj/test_llista.o 
 
-LIBRARIES	:=
+# llista code
+llista.o : src/llista.c
+	$(CC) $(CFLAGS) -I include -c src/llista.c -o obj/llista.o
 
-ifeq ($(OS),Windows_NT)
-EXECUTABLE	:= main.exe
-else
-EXECUTABLE	:= main
-endif
+# Run
+.PHONY : run_test run_triangulo
+run_test: test_llista
+	./bin/test_llista
 
-SOURCEDIRS	:= $(shell find $(SRC) -type d)
-INCLUDEDIRS	:= $(shell find $(INCLUDE) -type d)
-LIBDIRS		:= $(shell find $(LIB) -type d)
-
-CINCLUDES	:= $(patsubst %,-I%, $(INCLUDEDIRS:%/=%))
-CLIBS		:= $(patsubst %,-L%, $(LIBDIRS:%/=%))
-
-SOURCES		:= $(wildcard $(patsubst %,%/*.c, $(SOURCEDIRS)))
-OBJECTS		:= $(SOURCES:.c=.o)
-
-
-all: $(BIN)/$(EXECUTABLE)
-
-.PHONY: clean
-clean:
-	-$(RM) $(BIN)/$(EXECUTABLE)
-	-$(RM) $(OBJECTS)
-
-
-run: all
-	./$(BIN)/$(EXECUTABLE)
-
-$(BIN)/$(EXECUTABLE): $(OBJECTS)
-	$(CC) $(CFLAGS) $(CINCLUDES) $(CLIBS) $^ -o $@ $(LIBRARIES)
+# Clean target
+.PHONY : clean
+clean :
+	rm obj/* bin/* 
