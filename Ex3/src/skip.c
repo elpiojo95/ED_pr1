@@ -116,9 +116,40 @@ int Inserir(skip_list *sl, int elem)
     return SUCCESS;
 }
 
+// TESTED //
 int Esborrar(skip_list *sl, int elem)
 {
-    return SUCCESS;
+    int level;
+    node *n;
+    n = (*sl)->header;
+    
+    for(level = (*sl)->header->level; level >= 0; level--) 
+    {
+        while(n->next[level] && n->next[level]->valor <= elem) 
+        {
+            // si lo encontramos hay que arreglar todos los punteros //
+            if (n->next[level]->valor == elem)
+            {
+                //bucle de todos los niveles que quedan
+                while(level >= 0)
+                {
+                    if (n->next[level]->valor == elem)
+                    {
+                        n->next[level] = n->next[level]->next[level];
+                        level--;
+                    }
+                    else
+                    {
+                        n = n->next[level];
+                    }
+                }
+                (*sl)->longitud--;
+                return SUCCESS;
+            }
+            n = n->next[level];
+        }
+    }
+    return NO_TROBAT;
 }
 
 // TESTED //

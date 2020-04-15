@@ -18,6 +18,7 @@ typedef struct skip_list_tag* skip_list;
 #define ERROR_FIN 3;
 #define ERROR_NOEXISTE 4;
 #define ERROR_VACIA 5;
+#define NO_TROBAT 6;
 
 int Crear(skip_list*sl);
 int Destruir(skip_list *sl);
