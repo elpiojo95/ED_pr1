@@ -4,7 +4,7 @@
 #include <stdbool.h>
 #include <limits.h>
 
-#define SKIPLIST_MAX_LEVEL 5
+#define SKIPLIST_MAX_LEVEL 15
 typedef struct Node_tag node;
 
 struct Node_tag {
@@ -21,7 +21,7 @@ struct skip_list_tag {
 int RandomLevel(int max);
 node* CrearNode(int val, int level);
 
-
+// TESTED //
 int Crear(skip_list *sl)
 {
     /*if ((*sl == NULL)
@@ -47,6 +47,7 @@ int Crear(skip_list *sl)
     return SUCCESS;
 }
 
+// TESTED //
 node* CrearNode(int val, int level)
 {
     node *n_temp ;
@@ -61,6 +62,7 @@ node* CrearNode(int val, int level)
     return n_temp;
 }
 
+// TESTED //
 int Destruir(skip_list *sl)
 {
     if ((*sl) == NULL)
@@ -79,6 +81,7 @@ int Destruir(skip_list *sl)
     return SUCCESS;
 }
 
+// TESTED //
 int Inserir(skip_list *sl, int elem)
 {
     if ((*sl) == NULL)
@@ -118,14 +121,14 @@ int Esborrar(skip_list *sl, int elem)
     return SUCCESS;
 }
 
-/* TESTED */
+// TESTED //
 int Longitud(skip_list sl, int *lon)
 {
     (*lon) = sl->longitud;
     return SUCCESS;
 }
 
-/* TESTED */
+// TESTED //
 int Buscar(skip_list sl, int elem, bool *trobat)
 {
     int level;
@@ -146,6 +149,7 @@ int Buscar(skip_list sl, int elem, bool *trobat)
     return SUCCESS;
 }
 
+// TESTED //
 int Cost_Buscar(skip_list sl, int elem, int *cost)
 {
     int level;
@@ -169,7 +173,7 @@ int Cost_Buscar(skip_list sl, int elem, int *cost)
     return SUCCESS;
 }
 
-/* TESTED */
+// TESTED //
 int RandomLevel(int max)
 {
     int n=0;
