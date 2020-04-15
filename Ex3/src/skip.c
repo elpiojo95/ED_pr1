@@ -4,7 +4,7 @@
 #include <stdbool.h>
 #include <limits.h>
 
-#define SKIPLIST_MAX_LEVEL 6
+#define SKIPLIST_MAX_LEVEL 5
 typedef struct Node_tag node;
 
 struct Node_tag {

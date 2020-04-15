@@ -89,11 +89,15 @@ int main(int argc, char *argv[]) {
         sd = CalcularSd(data, media);
         fprintf(fptr,"%d;%f;%f\n",n, media, sd);
         printf("test:%d media:%0.2f desv:%f\n",n, media, sd);
+        Inserir(&l, 1000);
+        Cost_Buscar(l, 1000, &cost);
+        printf("coste wtf = %d\n",cost );
         err = Destruir(&l);
         if (err)
         {
             printf("error_Destru: %d\n", err);
         }
+        
         printf("---Fin Test %d---\n\n",test);
     }
     fclose(fptr);
